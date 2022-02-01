@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import {Header} from 'react-native-elements';
 import { SafeAreaProvider  } from 'react-native-safe-area-context';
+import db from './localdb';
 
 export default class App extends React.Component {
   constructor(){
@@ -19,6 +20,7 @@ export default class App extends React.Component {
         <Header backgroundColor = {'#5499C7'} centerComponent ={{
           text: 'Mono Fragmentado', style:{color:'#F2F3F4', fontSize: 20},
         }} />
+        <Image style={styles.imageIcon} source={{uri:'https://cdn-icons-png.flaticon.com/512/949/949561.png'}} />
         <TextInput onChangeText = {text => {
           this.setState({text: text}); 
         }}
@@ -61,6 +63,11 @@ const styles = StyleSheet.create({
   displayText:{
     textAlign:"center",
     fontSize:30
+  },
+  imageIcon:{
+    width:150,
+    height:150,
+    marginLeft: 150
   }
 });
 

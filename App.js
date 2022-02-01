@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import {Header} from 'react-native-elements';
-//import { SafeAreaProvider  } from 'react-native-safe-area-context';
+import { SafeAreaProvider  } from 'react-native-safe-area-context';
 
 export default class App extends React.Component {
   constructor(){
@@ -14,7 +14,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-     // <SafeAreaProvider >
+      <SafeAreaProvider >
       <View style={styles.container}>
         <Header backgroundColor = {'#5499C7'} centerComponent ={{
           text: 'Mono Fragmentado', style:{color:'#F2F3F4', fontSize: 20},
@@ -28,7 +28,7 @@ export default class App extends React.Component {
         </TouchableOpacity>
         <Text style = {styles.displayText}>{this.state.displayText}</Text>
       </View>
-      //</SafeAreaProvider>
+      </SafeAreaProvider>
     );
   }
 }

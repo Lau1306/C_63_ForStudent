@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       text: "", 
-      displayText: ""
+      chunks: []
     }
   }
 
@@ -25,10 +25,20 @@ export default class App extends React.Component {
           this.setState({text: text}); 
         }}
         value = {this.state.text} style = {styles.inputBox} />
-        <TouchableOpacity style = {styles.goButton} onPress = {()=>{this.setState({displayText: this.state.text})}}>
+        <TouchableOpacity style = {styles.goButton} onPress = {()=>{this.setState({chunks: db[this.state.text].chunks})}}>
           <Text style={styles.buttonText}> Go </Text>
         </TouchableOpacity>
-        <Text style = {styles.displayText}>{this.state.displayText}</Text>
+        <View>
+          {
+            this.state.chunks.map(item =>{
+              return(
+                <TouchableOpacity style = {styles.chunksButton}>
+                  <Text style = {styles.displayText}>{item}</Text>
+                </TouchableOpacity>
+              )
+            })
+          }
+        </View>
       </View>
       </SafeAreaProvider>
     );
@@ -68,6 +78,16 @@ const styles = StyleSheet.create({
     width:150,
     height:150,
     marginLeft: 150
+  },
+  chunkButton:{
+    width:'60%',
+    height:50,
+    justifyContent: "center",
+    alignItems:"center",
+    alignSelf:"center",
+    borderRadius:10,
+    margin:5,
+    backgroundColor:"red"
   }
 });
 
